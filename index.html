@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Navigation Bar</title>
+</head>
+
+<body>
+    <nav>
+        <div class="header">
+            <h3>My<span>Web.</span></h3>
+            <div class="toggle-wrapper">
+                <ion-icon class="toggle" name="menu"></ion-icon>
+                <input type="checkbox" class="toggle-check">
+            </div>
+        </div>
+        <div class="navbar navbar-off">
+            <a href="" class="navlink">Home</a>
+            <a href="" class="navlink">Profile</a>
+            <a href="" class="navlink">Skills</a>
+            <div class="dropdown">
+                <a href="#" class="navlink dropdown-link">Projects <ion-icon class="icon"
+                        name="arrow-dropdown"></ion-icon></a>
+                <div class="dropdown-menu">
+                    <a href="">Web Development</a>
+                    <a href="">Graphic Design</a>
+                    <a href="">Copywriting</a>
+                </div>
+            </div>
+            <a href="" class="navlink">contact</a>
+            <div class="btn">
+                <button class="btn-login">Login</button>
+            </div>
+
+        </div>
+    </nav>
+
+    <script src=" https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        var toggle = document.querySelector(".toggle-wrapper");
+        var toggleIcon = document.querySelector(".toggle-wrapper .toggle");
+        var toggleCheck = document.querySelector(".toggle-check");
+        var navBar = document.querySelector(".navbar");
+        var navBarOn = document.querySelector(".navbar-on");
+
+
+        toggle.addEventListener('click', function () {
+
+            if (toggleCheck.checked == true) {
+                navBar.classList.remove("navbar-off");
+                navBar.classList.add("navbar-on");
+                toggleIcon.setAttribute("name", "close");
+            } else {
+                navBar.classList.remove("navbar-on");
+                navBar.classList.add("navbar-off");
+                toggleIcon.setAttribute("name", "menu");
+            }
+            return
+        });
+
+        document.onclick = function (e) {
+            if (!toggle.contains(e.target) && !navBar.contains(e.target)) {
+                navBar.classList.remove("navbar-on");
+                navBar.classList.add("navbar-off");
+                toggleCheck.checked = false;
+                toggleIcon.setAttribute("name", "menu");
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
